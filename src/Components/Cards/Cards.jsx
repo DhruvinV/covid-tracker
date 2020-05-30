@@ -5,7 +5,8 @@ import  styles from './Cards.module.css';
 import cx from 'classnames';
 
 const Cards = (props) =>{
-    if(!props){
+    // console.log(props)
+    if(!props.data){
         return 'Loading ....';
     }
     return(
@@ -46,7 +47,7 @@ const Cards = (props) =>{
                    <Typography variant='h5' gutterBottom>
                     <CountUp
                     start = {0}
-                    end = {props.data.Recovered}
+                    end = {props.data.Deaths}
                     duration={2}
                     separator=","
                     />

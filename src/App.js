@@ -2,30 +2,48 @@ import React,{useState,useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {StyleSheet,css} from 'aphrodite'; 
-import {getData} from './api';
+import {getDataFrom} from './api';
+import axios from 'axios'; 
 import {Cards,Charts,CountryPicker} from './Components';
+const url2 = 'https://covid19.mathdro.id/api'
+// import styles from './App.module.css'
 
 function App() {
 
-  const[currData,updateData] = useState({
+  const[currData,setData] = useState({
     Confirmed: 0,
     Deaths: 0,
     Recovered: 0,
   })
+  const [country,setCountry] = useState('')
+
   useEffect(() =>{
-  getData().then(
-    // data => console.log(data.Global)
-    data => {
-    let newData = {Confirmed: data.Global.TotalConfirmed,Deaths: data.Global.TotalDeaths,Recovered: data.Global.TotalRecovered} 
-    updateData(newData);
+    const fetchedData = async() =>{
+      try {
+        setData(await getDataFrom(country))
+      }catch(error){
+        // const {data:{confirmed,recovered,deaths}} = await axios.get(url)
+        // return {Confirmed: confirmed.value,Deaths: deaths.value,Recovered:recovered.value}
+        console.log("Ewew",error,"323")
+      }
     }
-  ).catch(error => console.log(error))
-  })
+    fetchedData()
+  },[setData,country])
+
+  // useEffect(() =>{
+  //   const fetchedData = async() =>{
+  //     try{
+  //       setData(awa)
+  //     }
+  //   }
+  // },[country])
+
+    
   return (
-    <div className={css(styles.container  )}>
+    <div className={css(styles.container)}>
       <Cards data={currData}/>
-      <CountryPicker/>
-      <Charts/>
+      <CountryPicker setCountry={setCountry}/>
+      <Charts data={currData} country={country}/>
     </div>
   );
 }
@@ -40,6 +58,7 @@ container: {
 display: 'flex',
 alignItems: 'center',
 justifyContent: 'center',
+flexDirection:'column',
 
 }
 })
