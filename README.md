@@ -16,5 +16,5 @@ It correctly bundles React in production mode and optimizes the build for the be
 Your app is ready to be deployed!
 
 ## Landing Page
-
+<img src="https://github.com/DhruvinV/corona-numbers/blob/master/landing.gif" width="500" height="500" />
 ![alt-text](https://github.com/DhruvinV/corona-numbers/blob/master/landing.gif)
