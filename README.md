@@ -17,4 +17,4 @@ Your app is ready to be deployed!
 
 ## Landing Page
 
-![alt-text](https://github.com/dhruvinv/corona-numbers/landing.gif)
+![alt-text](https://github.com/DhruvinV/corona-numbers/blob/master/landing.gif)
