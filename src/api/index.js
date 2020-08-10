@@ -6,7 +6,7 @@ const url = 'https://covid19.mathdro.id/api';
 export const getDataFrom = async(country) =>{
 
     // const newUrl = `${url}/countrrs/${country}`
-    if(country===''){
+    if(country==='' || country  === 'global'){
         try{
             // console.log( await axios.get(summaryUrl))
             // console.log(await axios.get(url))
@@ -29,7 +29,6 @@ export const getDataFrom = async(country) =>{
     }
     }
 }
-getDataFrom("India")
 export const getDailyData = async() =>{
 
     try{
